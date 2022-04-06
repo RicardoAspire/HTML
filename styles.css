@@ -1,0 +1,85 @@
+ .container{
+    font: 1em sans-serif;
+    width: 80%;
+    margin: 0px auto;
+}
+.container h1, h6{
+    text-align: center;
+}
+
+form{
+    width: 40%;
+    margin: 0px auto;
+}
+
+input[type="text"],
+input[type="number"],
+textarea,
+fieldset, 
+#city{
+width : 100%;
+border: 1px solid #333;
+box-sizing: border-box;
+padding: 10px;
+border-radius: 5px;
+}
+
+input:invalid {
+box-shadow: 0 0 2px 0.5px rgb(109, 12, 12);
+}
+
+input:focus:invalid {
+box-shadow: none;
+}
+
+.form-field{
+    margin: 10px;
+}
+
+input[type=email]{
+-webkit-appearance: none;
+appearance: none;
+
+width: 100%;
+border: 1px solid #333;
+margin: 0;
+
+font-family: inherit;
+font-size: 90%;
+
+box-sizing: border-box;
+padding: 10px;
+border-radius: 5px;
+}
+
+/* This is our style for the invalid fields */
+input:invalid{
+border-color: #900;
+background-color: #FDD;
+}
+
+input:focus:invalid {
+outline: none;
+}
+
+/* This is the style of our error messages */
+.error {
+width  : 100%;
+padding: 0;
+
+font-size: 80%;
+color: white;
+background-color: #900;
+border-radius: 0 0 5px 5px;
+
+box-sizing: border-box;
+}
+
+.error.active {
+padding: 0.3em;
+}
+
+  /* shadow DOM */
+h2{
+    color:red;
+}
