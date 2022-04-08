@@ -9,57 +9,137 @@
 </head>
 <body>
     <div class="container">
-        <h1>Registration Form</h1>
-        <h6>(Topics 3 - 5 in HTML section)</h6>
+        <!-- FORM  WITH JAVASCRIPT VALIDATION -->
         <hr>
+        <h1>Registration Form</h1>
+        <h6>(Topics 1 - 4 in HTML section)</h6>
         <form>
             <div class="form-field">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Enter your name here" required>
+                <input type="text" id="name" placeholder="Enter your name here" required>
             </div>
             <div class="form-field">
                 <label for="age">Your Age</label>
-                <input type="number" id="age" name="age" value="1" min="1" max="100">
+                <input type="number" id="age" value="1" min="1" max="100">
             </div>
             <div class="form-field">
                 <fieldset>
-                    <legend>Gender<abbr title="This is a required field" required>*</abbr></legend>
-                    <input type="radio" required name="gender" id="m" value="male"><label for="r1">Male</label>
-                    <input type="radio" required name="gender" id="f" value="female"><label for="r2">Female</label>
-                    <input type="radio" required name="gender" id="o" value="other"><label for="r3">Other</label>
+                    <legend>Gender<abbr title="This is a required field">*</abbr></legend>
+                    <div id="gender"></div>
                 </fieldset>
             </div>
             <div class="form-field">
                 <label for="t1">City<abbr title="This is a required field" required>*</abbr></label>
-                    <select name="city" id="city">
-                        <option value="Puebla">Puebla</option>
-                        <option value="Guadalajara">Guadalajara</option>
-                        <option value="CDMX">CDMX</option>
-                        <option value="Monterrey">Monterrey</option>
-                        <option value="Sinaloa">Sinaloa</option>
-                        <option value="Tlaxcala">Tlaxcala</option>
-                    </select>
+                <select id="city"></select>
             </div>
             <div class="form-field">
                 <label for="mail">
                     <span>Please enter an email address:</span>
-                    <input type="email" id="mail" name="mail" required minlength="8">
+                    <input type="email" id="mail"  required minLength="8">
                     <span class="error" aria-live="polite"></span>
                 </label>
             </div>
             <div class="form-field">
                 <label for="t3">Optional message</label>
-                <textarea id="t3" name="msg" maxlength="140" rows="5"></textarea>
+                <textarea id="t3"  maxlength="140" rows="5"></textarea>
             </div>
-            <button>Submit</button>
+            <button id="submit">Submit</button>
           </form>
           <br>
-        <h1>Custom elements</h1>
-        <h6>(Topic 6 in HTML section)</h6>
+        <!-- WEB COMPONENTS -->
         <hr>
-        <h2>Test of color with Shadow DOM</h2>
+        <h1>Custom elements</h1>
+        <h6>(Topic 5 in HTML section)</h6>
+        <div id="tag"></div>
         <my-product></my-product>
         <hello-world name="Ricardo" surname="Flores"></hello-world>
+        <!-- WEB SOCKETS -->
+        <hr>
+        <h1>Web Sockets</h1>
+        <h6>(Topic 6 in HTML section)</h6>
+        <div id="webSocket"></div>
+
+        <!-- SERVER SENT EVENTS -->
+        <hr>
+        <h1>Server Sent events</h1>
+        <h6>(Topic 7 in HTML section)</h6>
+        <h2>To test the local server click:  <a href="http://localhost:8080/" class="button">Here</a> </h2>
+        <h3>And then on the console of the browser type: " let sse = new EventSource("http://localhost:8080/stream"); "</h3>
+        <h5>Here you are connecting with the server so you can see the messages that it is sending</h5>
+        <h3>And then type this on the console: " sse.onmessage = console.log ":</h3>
+        <h5>Here you are receiving the messages from the server in console</h5>
+
+        <!-- LOCAL STORAGE -->
+        <hr>
+        <h1>Local Storage</h1>
+        <h6>(Topic 8 in HTML section)</h6>
+        <h2>The Inputs of the Form will be saved on the Local Storage, if you want to try, fill the form.</h2>
+        <h3>Local Storage data:</h3>
+        <div id="showLocalStorage"></div>
+
+
+
+        <script>
+            /* WEB SOCKETS USER*/
+            const date = "07/04/2022";
+            const ws = new WebSocket("ws://localhost:8082");
+            ws.addEventListener("open", ()=> {
+                console.log("We are connected");
+                ws.send(` ${date} - This message has been sent using Web sockets and Javascript.`);
+            });
+            ws.addEventListener("message", ({ data })=> {
+                //Function that reads a Blob data and transform it as Text
+                if (data instanceof Blob) {
+                    reader = new FileReader();
+                    reader.readAsText(data);
+                    reader.onload = () => {
+                        const socketDOM = document.getElementById('webSocket');
+                        var socketMessage = document.createElement('h2');
+                        socketMessage.innerHTML = `${reader.result}`;
+                        socketDOM.appendChild(socketMessage);
+                    };
+                }
+            });
+
+            /* LOCAL STORAGE */
+            /*
+                //Add Item
+                localStorage.setItem("nameRicardo","Ricardo");
+                localStorage.setItem("ageRicardo","25");
+                localStorage.setItem("nameTwo","Andrea");
+                //Remove Item
+                localStorage.removeItem("nameRicardo");
+                //Show a key 
+                console.log(localStorage.key(1));
+            */
+
+            //Save the Form Data 
+            const nameForm = document.getElementById("name");
+            const ageForm = document.getElementById("age");
+            const cityForm = document.getElementById("city");
+            const emailForm = document.getElementById("mail");
+            const t3Form = document.getElementById("t3");
+            const submitForm = document.getElementById("submit");
+            const showLocal = document.getElementById("showLocalStorage");
+            
+            //Save the Data in local storage
+            submitForm.onclick = function(){
+            let radioButtons = document.querySelector('input[type="radio"]:checked');
+            var ArrayLocalStorage = ['Name','Age','Gender','City','Message','Email'];
+            var ArrayLocalStorageValues = [nameForm.value,ageForm.value,radioButtons.value,cityForm.value,t3Form.value,emailForm.value];
+                console.log(ArrayLocalStorageValues);
+                for(var i=0; i<ArrayLocalStorage.length; i++){
+                    localStorage.setItem(ArrayLocalStorage[i],ArrayLocalStorageValues[i]);
+                }
+                localStorage.reload();
+            };
+            //Show the localStorage in the DOM 
+            for(i=0; i<localStorage.length; i++){
+                const key = localStorage.key(i);
+                const value = localStorage.getItem(key);
+                showLocal.innerHTML += `${key}: ${value} <br>`;
+            }
+        </script>
     </div>
     <script src="./scripts.js"></script>
 </body>
