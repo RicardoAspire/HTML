@@ -10,7 +10,7 @@ app.get("/stream", (req, res)=>{
 let i = 0; 
 function send (res){
     res.write("data: "+`Hello! ${i++}\n\n`);
-    setTimeout(() => send(res),1000);
+    setTimeout(( ) => send(res),1000);
 }
 
 app.listen(8080);
@@ -20,5 +20,4 @@ console.log("Listen to 8080");
     In the explorer console 
     1.- let sse = new EventSource("http://localhost:8080/stream");
     2.- sse.onmessage = console.log
-
 */
