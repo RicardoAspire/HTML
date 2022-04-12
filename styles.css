@@ -1,14 +1,78 @@
  .container{
-    font: 1em sans-serif;
-    width: 80%;
-    margin: 0px auto;
+    font: 1em sans-serif;    
 }
+.header{
+    display: flex;
+    height: 200px;
+    background-color: #58646d;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: rgb(85, 91, 255) 0px 0px 0px 3px, rgb(31, 193, 27) 0px 0px 0px 6px, rgb(255, 217, 19) 0px 0px 0px 9px, rgb(255, 156, 85) 0px 0px 0px 12px, rgb(255, 85, 85) 0px 0px 0px 15px;
+}
+
+.header h1
+{
+  text-transform: uppercase;
+  background-image: linear-gradient(
+    -225deg,
+    #231557 0%,
+    #44107a 29%,
+    #ff1361 67%,
+    #fff800 100%
+  );
+  background-size: auto auto;
+  background-clip: border-box;
+  background-size: 200% auto;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textclip 2s linear infinite;
+  display: flex;
+  align-items: center;
+  font-size: 40px;
+}
+
+@keyframes textclip {
+  to {
+    background-position: 200% center;
+  }
+}
+
+
 .container h1, h6{
     text-align: center;
 }
 
+.blockOne,
+.blockTwo,
+.blockThree,
+.blockFour,
+.blockFive,
+.blockSix,
+.blockSeven,
+.blockEight,
+.blockNine,
+.blockTen,
+.blockEleven,
+.blockTwelve,
+.blockThirteen{
+
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+margin-left: 50px;}
+.block{
+    margin: 10px !important;
+}
+
+.header{
+    margin: 10px;
+}
+
+
 form{
-    width: 40%;
+    width: 80%;
     margin: 0px auto;
 }
 
@@ -79,10 +143,6 @@ box-sizing: border-box;
 padding: 5px;
 }
 
-  /* shadow DOM */
-h2{
-    color:red;
-}
 
 .button{
     text-decoration: none;
@@ -121,3 +181,46 @@ h2{
   }
 
   
+  .video{
+      width: 35%;
+      height: 300px;
+      border-radius: 10px;
+  }
+  
+  audio{
+      width: 35%;
+  }
+
+  #editable{
+      background-color: antiquewhite;
+      width: 300px;
+      height: 100px;
+      font-weight: bold;
+      padding: 15px;
+  }
+
+  #box{
+    width: 100px;
+    height: 100px;
+    background-color: tomato;
+    border-radius: 10px;
+  }
+
+  #bigBox{
+    width: 200px;
+    height: 200px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  /* MEDIA QUERIES  */
+  @media (max-width: 820px) {
+    .blockOne h2{
+        color: #900;
+    }
+    .primera{
+        justify-content: center;
+    }
+  }
