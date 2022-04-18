@@ -57,31 +57,31 @@ function showError() {
 
 /* WEB COMPONENTS AND CUSTOM ELEMENTS */
 class helloWorld extends HTMLElement{
-    constructor(){
-        super();
-        this.name;
-        this.surname;
+  constructor(){
+    super();
+    this.name;
+    this.surname;
+  }
+  static get observedAttributes(){
+      return ['name',"surname"];
+  }
+  attributeChangedCallback(nameAtr, oldValue, newValue){
+    switch(nameAtr){
+      case "name": 
+        this.name = newValue; 
+      break;
+      case "surname": 
+        this.surname = newValue; 
+      break;
     }
-    static get observedAttributes(){
-        return ['name',"surname"];
-    }
-    attributeChangedCallback(nameAtr, oldValue, newValue){
-        switch(nameAtr){
-            case "name": 
-                this.name = newValue; 
-            break;
-            case "surname": 
-                this.surname = newValue; 
-            break;
-        }
-    }
-    connectedCallback(){
-        const select = document.getElementById('tag');
-        var message = document.createElement('h1');
-        message.innerHTML = `Hello ${this.name} ${this.surname} from a Web Component`;
-        message.style.color="#DF01D7";
-        select.appendChild(message);
-    }
+  }
+  connectedCallback(){
+    const select = document.getElementById('tag');
+    var message = document.createElement('h1');
+    message.innerHTML = `Hello ${this.name} ${this.surname} from a Web Component`;
+    message.style.color="#DF01D7";
+    select.appendChild(message);
+  }
 }
 window.customElements.define("hello-world", helloWorld);
 
@@ -118,32 +118,32 @@ ws.addEventListener("message", ({ data })=> {
       console.log(localStorage.key(1));
   */
 
-  //Save the Form Data 
-  const nameForm = document.getElementById("name");
-  const ageForm = document.getElementById("age");
-  const cityForm = document.getElementById("city");
-  const emailForm = document.getElementById("mail");
-  const t3Form = document.getElementById("t3");
-  const submitForm = document.getElementById("submit");
-  const showLocal = document.getElementById("showLocalStorage");
+//Save the Form Data 
+const nameForm = document.getElementById("name");
+const ageForm = document.getElementById("age");
+const cityForm = document.getElementById("city");
+const emailForm = document.getElementById("mail");
+const t3Form = document.getElementById("t3");
+const submitForm = document.getElementById("submit");
+const showLocal = document.getElementById("showLocalStorage");
 
-  //Save the Data in local storage
-  submitForm.onclick = function(){
-  let radioButtons = document.querySelector('input[type="radio"]:checked');
-  var ArrayLocalStorage = ['Name','Age','Gender','City','Message','Email'];
-  var ArrayLocalStorageValues = [nameForm.value,ageForm.value,radioButtons.value,cityForm.value,t3Form.value,emailForm.value];
-      console.log(ArrayLocalStorageValues);
-      for(var i=0; i<ArrayLocalStorage.length; i++){
-          localStorage.setItem(ArrayLocalStorage[i],ArrayLocalStorageValues[i]);
-      }
-      localStorage.reload();
-  };
-  //Show the localStorage in the DOM 
-  for(i=0; i<localStorage.length; i++){
-      const key = localStorage.key(i);
-      const value = localStorage.getItem(key);
-      showLocal.innerHTML += `${key}: ${value} <br>`;
-  }
+//Save the Data in local storage
+submitForm.onclick = function(){
+let radioButtons = document.querySelector('input[type="radio"]:checked');
+var ArrayLocalStorage = ['Name','Age','Gender','City','Message','Email'];
+var ArrayLocalStorageValues = [nameForm.value,ageForm.value,radioButtons.value,cityForm.value,t3Form.value,emailForm.value];
+    console.log(ArrayLocalStorageValues);
+    for(var i=0; i<ArrayLocalStorage.length; i++){
+        localStorage.setItem(ArrayLocalStorage[i],ArrayLocalStorageValues[i]);
+    }
+    localStorage.reload();
+};
+//Show the localStorage in the DOM 
+for(i=0; i<localStorage.length; i++){
+    const key = localStorage.key(i);
+    const value = localStorage.getItem(key);
+    showLocal.innerHTML += `${key}: ${value} <br>`;
+}
 
   /* TOUCH EVENTS */
 document.getElementById("touchEvents").addEventListener('touchend',touch);
@@ -170,108 +170,108 @@ function touch(event){
   console.log(event);
 }
 
-  /* GEO LOCATION */
-  const geolocation = document.getElementById("geolocation");
-  const geolocationData = document.getElementById("geolocationData");
-  var positionLatitude = 0;
-  var positionLongitude = 0;
+/* GEO LOCATION */
+const geolocation = document.getElementById("geolocation");
+const geolocationData = document.getElementById("geolocationData");
+var positionLatitude = 0;
+var positionLongitude = 0;
 
-  geolocation.onclick = function (){
-    const successCallback = (position) => {      
-      positionLatitude = position.coords.latitude;
-      positionLongitude = position.coords.longitude;
+geolocation.onclick = function (){
+  const successCallback = (position) => {      
+    positionLatitude = position.coords.latitude;
+    positionLongitude = position.coords.longitude;
 
-      var geolocationMessage = document.createElement('p');
-      geolocationMessage.innerHTML = `Your latitude is: ${position.coords.latitude} and longitude ${position.coords.longitude}`
-      var maps = document.createElement('a');
-      maps.className = "buttonGeo";
-      maps.innerHTML = "Google Maps";
-      maps.href = `https://www.google.com.mx/maps/@ ${position.coords.latitude}, ${position.coords.longitude},15z`
-      geolocationData.appendChild(geolocationMessage);
-      geolocationData.appendChild(maps);
-    
-    }
-    const errorCallback = (error) => {
-      var geolocationMessage = document.createElement('p');
-      geolocationMessage.innerHTML = `There was a error: ${error.message}`
-      geolocationData.appendChild(geolocationMessage);
-    }
-    navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+    var geolocationMessage = document.createElement('p');
+    geolocationMessage.innerHTML = `Your latitude is: ${position.coords.latitude} and longitude ${position.coords.longitude}`
+    var maps = document.createElement('a');
+    maps.className = "buttonGeo";
+    maps.innerHTML = "Google Maps";
+    maps.href = `https://www.google.com.mx/maps/@ ${position.coords.latitude}, ${position.coords.longitude},15z`
+    geolocationData.appendChild(geolocationMessage);
+    geolocationData.appendChild(maps);
+  
   }
-
-  /* DEVICE ORIENTATION */
-  const deviceOrientation = document.getElementById("deviceOrientation");
-  var orientationMessage = document.createElement('p');
-
-  window.addEventListener('deviceorientation', function(){
-    var angle = window.orientation;
-    switch(angle){
-      case 0: orientationMessage.innerHTML = "Vertical";
-      break;
-      case 90: orientationMessage.innerHTML = "Horizontal";
-      break;
-      case -90: orientationMessage.innerHTML = "-90°";
-      break;
-    }
-    deviceOrientation.appendChild(orientationMessage);
-  },true);
-
-  /* EDITABLE CONTENT */
-  const editable = document.getElementById("editable");
-  const editableButton = document.getElementById("editableButton");
-  const uneditableButton = document.getElementById("uneditableButton");
-  
-  editableButton.onclick = function(){
-    editable.contentEditable = true;
+  const errorCallback = (error) => {
+    var geolocationMessage = document.createElement('p');
+    geolocationMessage.innerHTML = `There was a error: ${error.message}`
+    geolocationData.appendChild(geolocationMessage);
   }
-  uneditableButton.onclick = function(){
-    editable.contentEditable = false;
-  }
-  
-  /* DRAG AND DROP */
-  const box = document.querySelector('#box');
-  const bigBox = document.querySelector('#bigBox');
-  /* 
-  box.addEventListener('dragstart', e=>{
-    console.log('Drag start');
-  });
-  box.addEventListener('dragend', e=>{
-    console.log('Drag end');
-  });
-  box.addEventListener('drag', e=>{
-    console.log('Drag');
-  }); 
-  */
-  bigBox.addEventListener('dragenter', e =>{
-    console.log('drag enter');
-  });
-  bigBox.addEventListener('dragleave', e =>{
-    console.log('drag leave');
-  });
-  bigBox.addEventListener('dragover', e =>{
-    e.preventDefault();
-    console.log('drag over');
-  });
-  bigBox.addEventListener('drop', e =>{
-    console.log('drop');
-    bigBox.appendChild(box);
-  });
+  navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+}
 
-  /* WEB WORKERS */
-    const worker = new Worker('worker.js');
-    new Worker(URL.createObjectURL(new Blob(["("+worker_function.toString()+")()"], {type: 'text/javascript'})));
-  
-    const sumButton = document.querySelector("#sumButton");
-    const bgButton = document.querySelector("#bgButton");
-  
-    sumButton.addEventListener("click", (event) => {
-      worker.postMessage('Hello');
-    });
-  
-    bgButton.addEventListener("click", event =>{
-      if(document.body.style.background != "green"){
-        document.body.style.background = "green";
-      }else{
-        document.body.style.background = "blue";
-      }
-    });
+/* DEVICE ORIENTATION */
+const deviceOrientation = document.getElementById("deviceOrientation");
+var orientationMessage = document.createElement('p');
+
+window.addEventListener('deviceorientation', function(){
+  var angle = window.orientation;
+  switch(angle){
+    case 0: orientationMessage.innerHTML = "Vertical";
+    break;
+    case 90: orientationMessage.innerHTML = "Horizontal";
+    break;
+    case -90: orientationMessage.innerHTML = "-90°";
+    break;
+  }
+  deviceOrientation.appendChild(orientationMessage);
+},true);
+
+/* EDITABLE CONTENT */
+const editable = document.getElementById("editable");
+const editableButton = document.getElementById("editableButton");
+const uneditableButton = document.getElementById("uneditableButton");
+
+editableButton.onclick = function(){
+  editable.contentEditable = true;
+}
+uneditableButton.onclick = function(){
+  editable.contentEditable = false;
+}
+
+/* DRAG AND DROP */
+const box = document.querySelector('#box');
+const bigBox = document.querySelector('#bigBox');
+/* 
+box.addEventListener('dragstart', e=>{
+  console.log('Drag start');
+});
+box.addEventListener('dragend', e=>{
+  console.log('Drag end');
+});
+box.addEventListener('drag', e=>{
+  console.log('Drag');
+}); 
+*/
+bigBox.addEventListener('dragenter', e =>{
+  console.log('drag enter');
+});
+bigBox.addEventListener('dragleave', e =>{
+  console.log('drag leave');
+});
+bigBox.addEventListener('dragover', e =>{
+  e.preventDefault();
+  console.log('drag over');
+});
+bigBox.addEventListener('drop', e =>{
+  console.log('drop');
+  bigBox.appendChild(box);
+});
+
+/* WEB WORKERS */
+const worker = new Worker('worker.js');
+new Worker(URL.createObjectURL(new Blob(["("+worker_function.toString()+")()"], {type: 'text/javascript'})));
+
+const sumButton = document.querySelector("#sumButton");
+const bgButton = document.querySelector("#bgButton");
+
+sumButton.addEventListener("click", (event) => {
+  worker.postMessage('Hello');
+});
+
+bgButton.addEventListener("click", event =>{
+  if(document.body.style.background != "green"){
+    document.body.style.background = "green";
+  }else{
+    document.body.style.background = "blue";
+  }
+});

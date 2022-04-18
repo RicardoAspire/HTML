@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -48,7 +47,7 @@
                         <label for="t3">Optional message</label>
                         <textarea id="t3"  maxlength="140" rows="5"></textarea>
                     </div>
-                    <button id="submit" class="btn btn-success">Submit</button>
+                    <input type="submit" id="submit" class="btn btn-success" value="submit">
                 </form>
             </div>
             
@@ -74,7 +73,9 @@
                     <h2>Server Sent events</h2>
                     <h6>(Topic 7 in HTML section)</h6>
                     <br>
-                    <p>To test the local server click: <button class="btn btn-success"><a href="http://localhost:8080/" style="text-decoration:none; color:white">Here</a></button>  </p>
+                    <p>To test the local server click: 
+                        <input type="button" class="btn btn-success" value="Here" onclick="location.href=`http://localhost:8080/`" />
+                    </p>
                     <br>
                     <b>And then on the console of the browser type: " let sse = new EventSource("http://localhost:8080/stream"); "</b>
                     <p>Here you are connecting with the server so you can see the messages that it is sending</p>
@@ -106,13 +107,12 @@
     </div>
 
     <div class="row">
-
         <!-- GEO LOCATION -->
         <div class="col block blockSeven">
             <h2>Geo Location</h2>
             <h6>(Topic 11 in HTML section)</h6>
             <div style="text-align: center;">
-                <button id="geolocation" style="margin-bottom: 10px;" class="btn btn-success">Try</button>
+                <input type="button" id="geolocation" style="margin-bottom: 10px;" class="btn btn-success" value="Try">
             </div>
             <div id="geolocationData"></div>
         </div>
@@ -140,12 +140,12 @@
         </div>
     </div>
 
-        <div class="row">
+    <div class="row">
         <!-- HISTORY API -->
         <div class="col block blockTen">
             <h2>History API</h2>
             <h6>(Topic 14 in HTML section)</h6>
-            <button class="btn btn-success"><a href="./views/page2.html" style="text-decoration:none; color:white">PAGE 2 </a></button>
+            <input type="button" class="btn btn-success" value="PAGE 2" onclick="location.href=`./views/page2.html`" />
         </div>
 
         <!-- EDITABLE CONTENT -->
@@ -156,8 +156,8 @@
                 Editable content
             </div>
             <br>
-            <button id="editableButton" class="btn btn-success">Editable</button>
-            <button id="uneditableButton" class="btn btn-success">Uneditable</button>
+            <input id="editableButton" type="button" class="btn btn-success" value="Editable"/>
+            <input id="uneditableButton" type="button" class="btn btn-success" value="Uneditable"/>
         </div>
 
          <!-- DRAG AND DROP -->
@@ -175,9 +175,8 @@
             <h2>Web worker</h2>
             <h6>(Topic 17 in HTML section)</h6>
             <br>
-            <button id="sumButton" class="btn btn-success">Calculate sum </button>
-            <br><br>
-            <button id="bgButton" class="btn btn-success">Change background color</button>
+            <input id="sumButton" type="button" class="btn btn-success" value="Calculate sum"/><br><br>
+            <input id="bgButton" type="button" class="btn btn-success" value="Change background color"/>
         </div>
         </div>
     </div>
