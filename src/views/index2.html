@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Html Ricardo Flores</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Ricardo Flores Salcedo Trainee for HTML AND CSS</h1>
+        </div>
+        <br>
+        <ul class="nav nav-pills navStyle">
+            <li class="nav-item">
+                <a class="nav-link" href="./index.html">First</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="./index2.html">Second</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./index3.html">Third</a>
+            </li>
+        </ul>
+        <div class="row">
+            
+            <!-- TOUCH EVENTS -->
+            <div class="col block blockSix">
+                <h2>Touch Events</h2>
+                <h6>(Topic 10 in HTML section)</h6>
+                <p>To test this code open the cellphone emulator in the browser and select any device.</p>
+                <h3 id="touchMessage"></h3>
+                <h3 id="touchCoordinates"></h3>
+                <div id="touchEvents" class="touchEvents"></div>
+            </div>        
+        </div>
+        <div class="row">
+            <!-- GEO LOCATION -->
+            <div class="col block blockSeven">
+                <h2>Geo Location</h2>
+                <h6>(Topic 11 in HTML section)</h6>
+                <div style="text-align: center;">
+                    <input type="button" id="geolocation" style="margin-bottom: 10px;" class="btn btn-success" value="Try">
+                </div>
+                <div id="geolocationData"></div>
+            </div>
+            <!-- DEVICE ORIENTATION -->
+            <div class="col block blockEight">
+                <h2>Device Orientation</h2>
+                <h6>(Topic 12 in HTML section)</h6>
+                <p>To test this code open the cellphone emulator in the browser, change the orientation and reload the webpage, you will see a message indicating if it is Horizontal or Vertical orientation.</p>
+                <div id="deviceOrientation"></div>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/script2.js"></script>
+</body>
+</html>

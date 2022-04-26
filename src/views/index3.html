@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <title>Html Ricardo Flores</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Ricardo Flores Salcedo Trainee for HTML AND CSS</h1>
+        </div>
+        <br>
+        <ul class="nav nav-pills navStyle">
+            <li class="nav-item">
+                <a class="nav-link" href="./index.html">First</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="./index2.html">Second</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="./index3.html">Third</a>
+            </li>
+        </ul>
+        <div class="row justify-content-center">
+            <!-- VIDEO AND AUDIO CONTENT -->
+            <div class="col-11  block blockNine">
+                <h2>Video and audio</h2>
+                <h6>(Topic 13 in HTML section)</h6>
+                <div style="text-align: center;">
+                    <h3>Video</h3>
+                    <video src="../../assets/video/sunset.mp4" type="video/mp4" poster="../../assets/img/sunset.jfif" class="video" controls></video>
+                    <br>
+                    <h3>Audio</h3>
+                    <audio src="../../assets/audio/cuetes.mp3" controls class="audio"></audio>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <!-- HISTORY API -->
+            <div class="col block blockTen">
+                <h2>History API</h2>
+                <h6>(Topic 14 in HTML section)</h6>
+                <input type="button" class="btn btn-success" value="PAGE 2" onclick="location.href=`./page2.html`" />
+            </div>
+            <!-- EDITABLE CONTENT -->
+            <div class="col block blockEleven">
+                <h2>Editable content</h2>
+                <h6>(Topic 15 in HTML section)</h6>
+                <div id="editable" contenteditable="true">
+                    Editable content
+                </div>
+                <br>
+                <input id="editableButton" type="button" class="btn btn-success" value="Editable"/>
+                <input id="uneditableButton" type="button" class="btn btn-success" value="Uneditable"/>
+            </div>
+            <!-- DRAG AND DROP -->
+            <div class="col block blockTwelve">
+                <h2>Drag and drop</h2>
+                <h6>(Topic 16 in HTML section)</h6>
+                <div id="box" draggable="true"></div>
+                <div id="bigBox">
+                    <p>Container</p>
+                </div>
+            </div>
+            <!-- WEB WORKERS -->
+            <div class="col block blockThirteen">
+                <h2>Web worker</h2>
+                <h6>(Topic 17 in HTML section)</h6>
+                <br>
+                <input id="sumButton" type="button" class="btn btn-success" value="Calculate sum"/><br><br>
+                <input id="bgButton" type="button" class="btn btn-success" value="Change background color"/>
+            </div>
+        </div>
+    </div>
+    <script src="../scripts/script3.js"></script>
+</body>
+</html>
